@@ -1,0 +1,16 @@
+﻿.ui-jqgrid-bdiv {
+    overflow-x: hidden !important;
+}
+
+.ui-jqgrid {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.ui-jqgrid-view {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+

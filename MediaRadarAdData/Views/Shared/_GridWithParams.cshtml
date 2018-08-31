@@ -1,0 +1,15 @@
+﻿
+<div class="container">
+    <div class="row">
+        <label class="control-label">Select date range : </label>
+        <input type="text" id="startDate" value="01/01/2011" class="date-width">         
+        <input type="text" id="endDate" value="04/01/2011" class="date-width">
+        <button id="refresh" class="btn btn-primary" onclick="gridRefresh()">Refresh</button>
+    </div>
+    <br />
+    <div class="row">
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
+    </div>
+</div>
+

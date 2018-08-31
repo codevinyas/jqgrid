@@ -1,0 +1,51 @@
+﻿@using MediaRadarAdData.Helpers;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Media Radar Ad Data</title>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
+    <link href="~/Content/jqgrid.custom.css" rel="stylesheet" />
+    <link href="~/Content/application.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery-ui-1.10.0.js"></script>
+    <script src="~/Scripts/i18n/grid.locale-en.js"></script>
+    <script src="~/Scripts/jquery.jqGrid.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/grid.js"></script>    
+</head>
+<body>    
+    <p class="padding"><img src="~/Images/logo.png" /></p>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="@Html.IsActive("AllAds", "AllAds")"><a href="@Url.Action("AllAds", "AllAds")">All Ads</a></li>
+                    <li class="@Html.IsActive("AdsByCoverage", "AdsByCoverage")"><a href="@Url.Action("AdsByCoverage", "AdsByCoverage")" >Ads By Coverage</a></li>
+                    <li class="@Html.IsActive("Top5Ads", "Top5Ads")"><a href="@Url.Action("Top5Ads", "Top5Ads")" >Top 5 Ads</a></li>
+                    <li class="@Html.IsActive("Top5Brands", "Top5Brands")"><a href="@Url.Action("Top5Brands", "Top5Brands")" >Top 5 Brands</a></li>                       
+                </ul>               
+            </div>
+        </div>
+    </nav>
+    @RenderBody()  
+            
+    <script>
+        $(function () {
+            $("#startDate").datepicker({ dateFormat: 'mm/dd/yy', changeYear : true}).datepicker('setDate', new Date(2011, 00, 01));
+            $("#endDate").datepicker({ dateFormat: 'mm/dd/yy', changeYear: true }).datepicker('setDate', new Date(2011, 03, 01));
+        });
+    </script>
+</body>
+</html>

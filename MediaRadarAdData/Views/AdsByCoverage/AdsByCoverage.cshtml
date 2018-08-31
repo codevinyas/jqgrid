@@ -1,0 +1,50 @@
+﻿<legend class="padding">All ads with atleast half cover position </legend>
+@Html.Partial("_GridWithParams")
+<script>
+    $(function () {
+        var startDateInput = $("#startDate").val();
+        var endDateInput = $("#endDate").val();
+        var myGrid = $('#jqGrid');
+
+        myGrid.jqGrid({
+            url: '/AdsByCoverage/GetAdsByCoverage',
+            datatype: "json",
+            contentType: "application/json; charset-utf-8",
+            mtype: 'GET',
+            colNames: ['Ad Id','Brand Id', 'Brand Name', 'Coverage', 'Position'],
+            colModel: [
+                { name: 'AdId', key: true, index:'AdId', width: 75 },
+                { name: 'Brand.BrandId', index: 'Brand.BrandId', width: 75 },
+                { name: 'Brand.BrandName', index: 'Brand.BrandName', width: 350 },
+                { name: 'NumPages', index:'NumPages',  width: 75, align : 'right' },
+                { name: 'Position', index:'Position', width: 75, align : 'center' }
+            ],
+            rowNum: 20,
+            pager: '#jqGridPager',
+            gridview: true,
+            pagerpos: 'center',
+            height: '100%',
+            emptyrecords: 'No records to display',
+            sortname: 'Brand.BrandName',
+            sortorder: 'asc',
+            viewrecords: true,
+            postData : {startDate : startDateInput, endDate : endDateInput},
+            jsonReader:
+             {
+                root: "rows",
+                page: "page",
+                total: "total",
+                records: "records",
+                repeatitems: false,
+                Id: "0"
+            },
+        }).navGrid('#jqGridPager',
+        {
+            edit: false,
+            add: false,
+            del: false,
+            search: false,
+            refresh: false
+        });        
+    })
+</script>

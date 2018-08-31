@@ -1,0 +1,37 @@
+﻿<legend class="padding">Top 5 ads by coverage </legend>
+@Html.Partial("_GridWithParams")
+<script>
+    $(function () {
+        var startDateInput = $("#startDate").val();
+        var endDateInput = $("#endDate").val();
+        var myGrid = $('#jqGrid');
+
+        myGrid.jqGrid({
+            url: '/Top5Ads/GetTop5Ads',
+            datatype: "json",
+            contentType: "application/json; charset-utf-8",
+            mtype: 'GET',
+            colNames: ['Ad Id', 'Brand Id', 'Brand Name', 'Coverage', 'Position'],
+            colModel: [
+                { name: 'AdId', key: true, index: 'AdId', width: 100, sortable: false },
+                { name: 'Brand.BrandId', index: 'Brand.BrandId', width: 100, sortable: false },
+                { name: 'Brand.BrandName', index: 'Brand.BrandName', width: 350, sortable: false },
+                { name: 'NumPages', index: 'NumPages', width: 100, align: 'right', sortable: false },
+                { name: 'Position', index: 'Position', width: 100, align: 'center', sortable: false }
+            ],
+            rowNum: 5,
+            gridview: true,            
+            height: '100%',
+            emptyrecords: 'No records to display',
+            viewrecords: true,
+            postData: { startDate: startDateInput, endDate: endDateInput },
+            jsonReader:
+             {            
+                 root: "rows",
+                 repeatitems: false,
+                 Id: "0"
+             },
+        });
+        
+    })
+</script>
